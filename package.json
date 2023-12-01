@@ -1,39 +1,24 @@
 {
-  "name": "restaurant-management",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "express-js-rest-api",
+  "version": "1.0.0",
+  "description": "backend for brand shop website",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.mjs"
   },
+  "author": "miskat",
+  "license": "ISC",
   "dependencies": {
-    "axios": "^1.6.2",
-    "firebase": "^10.6.0",
-    "localforage": "^1.10.0",
-    "match-sorter": "^6.3.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.12.0",
-    "react-responsive-modal": "^6.4.2",
-    "react-router-dom": "^6.20.0",
-    "react-toastify": "^9.1.3",
-    "sort-by": "^1.2.0"
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.1.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15",
-    "@vitejs/plugin-react": "^4.2.0",
-    "autoprefixer": "^10.4.16",
-    "daisyui": "^4.4.7",
-    "eslint": "^8.53.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.4",
-    "postcss": "^8.4.31",
-    "tailwindcss": "^3.3.5",
-    "vite": "^5.0.0"
+    "nodemon": "^3.0.1"
   }
 }
