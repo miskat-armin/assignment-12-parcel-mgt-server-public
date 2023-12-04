@@ -1,8 +1,6 @@
 import express from "express";
 import db from "../db/conn.mjs";
-import { ObjectId } from "mongodb";
 import VerifyToken from "../middlewares/jwt_verify.mjs";
-import VerifyAdmin from "../middlewares/verifyAdmin.mjs";
 
 const Users = express.Router();
 
@@ -34,8 +32,24 @@ Users.post("/create-user", async (req, res) => {
 Users.get("/admin/:email", VerifyToken, async (req, res) => {
   const email = req.params.email;
 
-  console.log("user" + email);
-  console.log(req.decoded?.email)
+  if (email !== req.decoded?.email) {
+    return res.status(403).send({ message: "forbidden access" });
+  }
+
+  const query = { email: email };
+
+  const user = await usersCollection.findOne(query);
+
+  let admin = false;
+  if (user) {
+    admin = user?.type === "admin";
+  }
+  res.send({ admin });
+});
+
+Users.get("/get-user-type/:email", VerifyToken, async (req, res) => {
+  const email = req.params.email;
+
   if (email !== req.decoded?.email) {
     return res.status(403).send({ message: "forbidden access" });
   }
@@ -43,14 +57,7 @@ Users.get("/admin/:email", VerifyToken, async (req, res) => {
   const query = { email: email };
   const user = await usersCollection.findOne(query);
 
-
-  let admin = false;
-  if (user) {
-    admin = user?.type === "admin";
-  }
-
-  console.log(admin);
-  res.send({ admin });
+  res.send({ type: user?.type });
 });
 
 export default Users;

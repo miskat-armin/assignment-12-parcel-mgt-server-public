@@ -4,6 +4,7 @@ import express from "express";
 import "express-async-errors";
 import jwt from "jsonwebtoken";
 import "./loadEnvironment.mjs";
+import Bookings from "./routes/bookings.mjs";
 import Users from "./routes/users.mjs";
 
 const PORT = process.env.PORT || 5050;
@@ -23,6 +24,7 @@ app.post("/api/jwt", async (req, res) => {
 });
 
 app.use("/api/users", Users);
+app.use("/api/bookings", Bookings);
 
 // Global error handling
 app.use((err, _req, res, next) => {
